@@ -19,12 +19,8 @@ var lengthOfLongestSubstring = function(s) {
       map[s[right]] = 1 
       right++
     } else {
-      while (left < right) {
-        delete map[s[left]]
-        if (map[s[left++]] === map[s[right]]) {
-          break;
-        }
-      }
+      delete map[s[left]]
+      left++
     }
     max = Math.max(max, right - left)
   }
