@@ -17,7 +17,16 @@
  * @return {boolean}
  */
 var isSymmetric = function(root) {
-    
+    function fn (left, right) {
+      if (!left && !right) {
+        return true
+      }
+      if (left && right) {
+        return left.val === right.val && fn(left.left, right.right) && fn(left.right, right.left)
+      }
+      return false
+    }
+    return root ? fn(root.left, root.right) : true 
 };
 // @lc code=end
 
