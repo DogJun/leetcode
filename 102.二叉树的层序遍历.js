@@ -1,0 +1,48 @@
+/*
+ * @lc app=leetcode.cn id=102 lang=javascript
+ *
+ * [102] 二叉树的层序遍历
+ */
+
+// @lc code=start
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var levelOrder = function(root) {
+  const res = []
+  const queue = []
+  queue.push(root)
+  while (queue.length) {
+    // 先缓存 length
+    const len = queue.length
+    const temp = []
+    for (let i = 0; i < len; i++) {
+      const node = queue[i]
+      if (node) {
+        temp.push(node.val)
+        if (node.left) {
+          queue.push(node.left)
+        }
+        if (node.right) {
+          queue.push(node.right)
+        }
+      }
+    }
+    // 出队
+    for (let i = 0; i < len; i++) {
+      queue.shift()
+    }
+    temp.length && res.push(temp)
+  }
+  return res
+};
+// @lc code=end
+
