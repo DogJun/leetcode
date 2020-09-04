@@ -25,7 +25,7 @@ var levelOrder = function(root) {
     const len = queue.length
     const temp = []
     for (let i = 0; i < len; i++) {
-      const node = queue[i]
+      const node = queue.shift()
       if (node) {
         temp.push(node.val)
         if (node.left) {
@@ -35,10 +35,6 @@ var levelOrder = function(root) {
           queue.push(node.right)
         }
       }
-    }
-    // 出队
-    for (let i = 0; i < len; i++) {
-      queue.shift()
     }
     temp.length && res.push(temp)
   }
